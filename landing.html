@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaTech | Build Smarter Digital Experiences</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #020617;
+      --primary: #38bdf8;
+      --primary-dark: #0ea5e9;
+      --text: #f1f5f9;
+      --muted: #cbd5f5;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+    body { background: var(--bg); color: var(--text); line-height: 1.6; scroll-behavior: smooth; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 50px; background: var(--card);
+      position: sticky; top: 0; z-index: 1000;
+    }
+
+    .logo { font-weight: 600; font-size: 20px; color: var(--primary); }
+
+    nav ul { display: flex; list-style: none; gap: 20px; }
+
+    nav a { text-decoration: none; color: var(--text); }
+    nav a:hover { color: var(--primary); }
+
+    .menu-toggle { display: none; font-size: 24px; cursor: pointer; }
+
+    .hero {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 80px 50px; gap: 40px;
+    }
+
+    .hero-text { max-width: 520px; opacity: 0; transform: translateY(40px); }
+
+    .hero h2 { font-size: 42px; margin-bottom: 20px; }
+    .hero p { margin-bottom: 25px; color: var(--muted); }
+
+    .btn {
+      padding: 12px 25px; background: var(--primary);
+      border: none; color: #020617; font-weight: 600;
+      border-radius: 8px; cursor: pointer; transition: 0.3s;
+    }
+    .btn:hover { background: var(--primary-dark); }
+
+    .hero img { width: 420px; border-radius: 12px; opacity: 0; transform: translateY(40px); }
+
+    .features, .pricing {
+      padding: 70px 50px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .card, .price-card {
+      background: var(--card); padding: 30px;
+      border-radius: 12px; transition: 0.3s;
+      opacity: 0; transform: translateY(40px);
+    }
+
+    .card:hover, .price-card:hover { transform: translateY(-8px); }
+
+    .testimonials { padding: 70px 50px; text-align: center; }
+    .testimonial { margin-top: 20px; color: var(--muted); opacity: 0; transform: translateY(40px); }
+
+    .contact { padding: 70px 50px; text-align: center; }
+
+    input, textarea {
+      width: 100%; padding: 12px; margin: 10px 0;
+      border-radius: 8px; border: none;
+    }
+
+    footer { text-align: center; padding: 20px; background: var(--card); margin-top: 40px; }
+
+    /* animations */
+    .show { opacity: 1 !important; transform: translateY(0) !important; transition: all 0.8s ease; }
+
+    /* mobile */
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute; top: 70px; right: 0;
+        background: var(--card); width: 100%;
+        flex-direction: column; align-items: center; display: none;
+      }
+
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+
+      .hero { flex-direction: column; text-align: center; }
+      .features, .pricing { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">NovaTech</div>
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+  <nav>
+    <ul id="menu">
+      <li><a href="#">Home</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text animate">
+    <h2>We design websites that feel effortless to use</h2>
+    <p>Our goal is simple — create digital experiences that are fast, intuitive, and built to convert visitors into customers.</p>
+    <button class="btn">Start Your Project</button>
+  </div>
+  <img class="animate" src="https://picsum.photos/500/350" alt="hero">
+</section>
+
+<section id="features" class="features">
+  <div class="card animate"><h3>Performance First</h3><p>Lightning-fast loading speeds that keep users engaged.</p></div>
+  <div class="card animate"><h3>Responsive Design</h3><p>Looks perfect on every screen size, no compromises.</p></div>
+  <div class="card animate"><h3>Clean Experience</h3><p>Minimal, modern, and focused on usability.</p></div>
+</section>
+
+<section class="testimonials">
+  <h2>What our clients say</h2>
+  <p class="testimonial animate">“Working with NovaTech was the best decision we made for our business.”</p>
+</section>
+
+<section id="pricing" class="pricing">
+  <div class="price-card animate"><h3>Starter</h3><p>$99</p><p>Perfect for small projects</p></div>
+  <div class="price-card animate"><h3>Professional</h3><p>$299</p><p>Best for growing businesses</p></div>
+  <div class="price-card animate"><h3>Enterprise</h3><p>$599</p><p>Advanced solutions for teams</p></div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Let’s build something meaningful</h2>
+  <input type="text" placeholder="Your Name">
+  <input type="email" placeholder="Your Email">
+  <textarea rows="4" placeholder="Tell us about your project"></textarea>
+  <button class="btn">Send Message</button>
+</section>
+
+<footer>
+  <p>© 2026 NovaTech. Designed for impact.</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('menu').classList.toggle('active');
+  }
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  });
+
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
